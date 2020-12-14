@@ -49,7 +49,8 @@ class MatchResultController extends Controller
      */
     public function show($id)
     {
-        //
+        $match_result = MatchResult::where('match_id', $id)->findOrFail($id);
+        return view('match_results.show', compact('match_result')); 
     }
 
     /**

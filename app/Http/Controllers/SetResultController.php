@@ -16,8 +16,8 @@ class SetResultController extends Controller
     public function index()
     {
         //
-        $set_results = SetResult::paginate();
-        return view('set_results.index', compact('set_results'));
+        $results = SetResult::paginate();
+        return view('set_results.index', compact('results'));
     }
 
     /**
@@ -49,7 +49,8 @@ class SetResultController extends Controller
      */
     public function show($id)
     {
-        //
+        $set_result = SetResult::where('set_number', $id)->findOrFail($id);
+        return view('set_results.show', compact('set_result')); 
     }
 
     /**

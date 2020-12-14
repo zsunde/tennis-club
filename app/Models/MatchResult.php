@@ -14,4 +14,5 @@ class MatchResult extends Model
         'winner_player_id',
         'number_of_sets',
     ];
+    protected $primaryKey = 'match_id';
 }

@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<table class="table table-striped">
-    <thead>
+<a class="btn btn-primary mt-5" href="{{route('matches.create')}}">Add</a>
+<table class="table table-striped mt-3"> 
+   <thead>    <thead>
         <tr>
             <th scope="col">id</th>
             <th scope="col">Player1 id</th>
             <th scope="col">Player2 id</th>
             <th scope="col">Played at</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,10 @@
             <td>{{$match->player1_id}}</td>
             <td>{{$match->player2_id}}</td>
             <td>{{$match->played_at}}</td>
+            <td>
+            <a class="btn btn-outline-primary" href="{{route('matches.show', ['match' => $match -> id])}}">Details</a>
+            <a class="btn btn-outline-primary" href="{{route('matches.edit', ['match' => $match -> id])}}">Edit</a>
+            </td>
         </tr>
         @endforeach
     </tbody>

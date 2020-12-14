@@ -49,7 +49,8 @@ class CourtController extends Controller
      */
     public function show($id)
     {
-        //
+        $court = Court::findOrFail($id); 
+        return view('courts.show', compact('court'));  
     }
 
     /**

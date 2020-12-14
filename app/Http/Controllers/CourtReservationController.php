@@ -49,7 +49,8 @@ class CourtReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        $court_reservation = CourtReservation::findOrFail($id); 
+        return view('court_reservation.show', compact('court_reservation')); 
     }
 
     /**

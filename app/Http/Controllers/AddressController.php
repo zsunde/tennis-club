@@ -49,8 +49,10 @@ class AddressController extends Controller
      */
     public function show($id)
     {
-        //
+        $address = Address::findOrFail($id); 
+        return view('addresses.show', compact('address'));    
     }
+    
 
     /**
      * Show the form for editing the specified resource.

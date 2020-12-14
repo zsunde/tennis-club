@@ -49,7 +49,8 @@ class MatchController extends Controller
      */
     public function show($id)
     {
-        //
+        $match = Match::findOrFail($id); 
+        return view('matches.show', compact('match'));  
     }
 
     /**

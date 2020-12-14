@@ -26,34 +26,34 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/members">Members</a>
+                    <a class="nav-link" href="{{route('members.index')}}">Members</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/countries">Countries</a>
+                    <a class="nav-link" href="{{route('countries.index')}}">Countries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/cities">Cities</a>
+                    <a class="nav-link" href="{{route('cities.index')}}">Cities</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addresses">Addresses</a>
+                    <a class="nav-link" href="{{route('addresses.index')}}">Addresses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/courts">Courts</a>
+                    <a class="nav-link" href="{{route('courts.index')}}">Courts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/court_reservation">Court reservation</a>
+                    <a class="nav-link" href="{{route('court_reservation.index')}}">Court reservation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/matches">Matches</a>
+                    <a class="nav-link" href="{{route('matches.index')}}">Matches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/match_results">Match results</a>
+                    <a class="nav-link" href="{{route('match_results.index')}}">Match results</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/set_results">Set results</a>
+                    <a class="nav-link" href="{{route('set_results.index')}}">Set results</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/roles">Roles</a>
+                    <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
                 </li>
             </ul>
         </div>

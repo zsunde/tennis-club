@@ -15,4 +15,6 @@ class SetResult extends Model
         'player1_games',
         'player2_games',
     ];
+    protected $primaryKey = 'set_number';
+
 }
