@@ -16,7 +16,7 @@ class AddressController extends Controller
     public function index()
     {
         //
-        $addresses = Address::paginate();
+        $addresses = Address::with(['city'])->paginate();
         return view('addresses.index', compact('addresses'));
     }
 
@@ -49,7 +49,7 @@ class AddressController extends Controller
      */
     public function show($id)
     {
-        $address = Address::findOrFail($id); 
+        $address = Address::with(['city'])->findOrFail($id);
         return view('addresses.show', compact('address'));    
     }
     

@@ -7,7 +7,7 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">Name</th>
-            <th scope="col">Country id</th>
+            <th scope="col">Country</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -16,7 +16,7 @@
         <tr>
             <td>{{$city->id}}</td>
             <td>{{$city->name}}</td>
-            <td>{{$city->country_id}}</td>
+            <td>{{$city->country->name}}</td>
             <td>
             <a class="btn btn-outline-primary" href="{{route('cities.show', ['city' => $city -> id])}}">Details</a>
             <a class="btn btn-outline-primary" href="{{route('cities.edit', ['city' => $city -> id])}}">Edit</a>

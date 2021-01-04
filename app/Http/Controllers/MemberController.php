@@ -16,7 +16,7 @@ class MemberController extends Controller
     public function index()
     {
         //
-        $members = Member::paginate();
+        $members = Member::with(['role', 'address'])->paginate();
         return view('members.index', compact('members'));
     }
 
@@ -27,7 +27,11 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $member =  Member::paginate();
+        $roles = Role::pluck('name', 'id');
+        $addresses = Address::pluck('street', 'id');
+        return view('members.create',
+        compact('member', 'roles', 'addresses')  ); 
     }
 
     /**
@@ -38,7 +42,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'address_id' => 'required',
+            'role_id' => 'required'
+        ]);
+        $member = Member::create($validated);
+        return view('members.show', compact('member')); 
     }
 
     /**
@@ -49,7 +60,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        $member = Member::findOrFail($id); 
+        $member = Member::with(['role', 'address'])->findOrFail($id);
         return view('members.show', compact('member'));  
     }
 
@@ -61,7 +72,12 @@ class MemberController extends Controller
      */
     public function edit($id)
     {
-        //
+        $member = Member::findOrFail($id);
+        $roles = Role::pluck('name', 'id');
+        $addresses = Address::pluck('street', 'id');
+        return view('members.edit',
+            compact('member', 'roles', 'addresses')
+        ); 
     }
 
     /**
@@ -73,7 +89,18 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'address_id' => 'required',
+            'role_id' => 'required'
+        ]);
+
+        $member = Member::findOrFail($id);
+        $member->fill($validated);
+        $member->save();
+
+        return redirect()->route('members.show', ['member' => $member->id]);
     }
 
     /**

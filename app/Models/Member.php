@@ -22,4 +22,9 @@ class Member extends Model
     {
     return $this->belongsToMany('App\Models\Court', 'court_reservation')->withPivot(id,'started_at', 'finished_at')->using('App\Models\CourtReservation');;
     }
+
+
+    public function role() { return $this->belongsTo(Role::class); }
+
+    public function address() { return $this->belongsTo(Address::class); }
 }

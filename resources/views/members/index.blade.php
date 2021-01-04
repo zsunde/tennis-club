@@ -10,8 +10,8 @@
             <th scope="col">Email</th>
             <th scope="col">Password</th>
             <th scope="col">Gender</th>
-            <th scope="col">Role id</th>
-            <th scope="col">Address id</th>
+            <th scope="col">Role</th>
+            <th scope="col">Address</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,8 +23,8 @@
             <td>{{$member->email}}</td>
             <td>{{$member->password}}</td>
             <td>{{$member->gender}}</td>
-            <td>{{$member->role_id}}</td>
-            <td>{{$member->address_id}}</td>
+            <td>{{$member->role->name}}</td>
+            <td>{{$member->address->street}}</td>
             <td>
             <a class="btn btn-outline-primary" href="{{route('members.show', ['member' => $member -> id])}}">Details</a>
             <a class="btn btn-outline-primary" href="{{route('members.edit', ['member' => $member -> id])}}">Edit</a>

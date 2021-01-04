@@ -13,4 +13,13 @@ class Address extends Model
         'street',
         'city_id',
     ];
+
+    public function city() { return $this->belongsTo(City::class); }
+
+    public function addresses() { return $this->hasMany(Address::class); }
+
+    public function members() { return $this->hasMany(Member::class); }
+
+
+
 }

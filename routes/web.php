@@ -37,3 +37,6 @@ Route::resource('matches', MatchController::class);
 Route::resource('set_results', SetResultController::class);
 Route::resource('match_results', MatchResultController::class);
 Route::resource('court_reservation', CourtReservationController::class);
+
+/* ovdje su rute za login, registraciju, change password, itd. */
+require __DIR__.'/auth.php';

@@ -1,3 +1,9 @@
+@php
+
+$currentUser = \Auth::user();
+
+@endphp
+
 <!doctype html>
 <html lang="en">
 
@@ -56,27 +62,56 @@
                     <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
                 </li>
             </ul>
+            @auth
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="nav-user" role="button" data-toggle="dropdown">
+                Welcome {{ $currentUser->name }}<small> ({{ $currentUser->role->name }})</small>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('users.show', ['user' => $currentUser->id]) }}">My profile</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+            </div>
+            </li>
+        </ul>
+        @endauth
         </div>
     </nav>
 
     <div class="container mt-5">
         @yield('content')
     </div>
-    <!-- Optional JavaScript; choose one of the two! -->
+    <style>
+        /* temporarily here */
+        body { padding-bottom: 10vh; }
+        footer {
+            left: 0;
+            bottom: 0;
+            height: 8vh;
+            z-index: 100;
+        }
+    </style>
+
+    <script>
+        /* temporarily here */
+        function areYouSure(ev) {
+            if(confirm('Are you sure you?')){
+                return true;
+            }
+            ev.preventDefault();
+            return false;
+        }
+    </script>
+    <footer class="bg-light w-100 text-center position-fixed pt-3">
+        <small>Powered by <a href="https://www.google.com/search?q=zapravo prevara" target="_blank">Kizo</a></small>
+    </footer>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-    </script>
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
 
 </html>

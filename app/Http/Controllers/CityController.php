@@ -15,8 +15,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
-        $cities = City::paginate();
+        $cities = City::with(['country'])->paginate();
         return view('cities.index', compact('cities'));
     }
 
@@ -49,7 +48,7 @@ class CityController extends Controller
      */
     public function show($id)
     {
-        $city = City::findOrFail($id); 
+        $city = City::with(['country'])->findOrFail($id);
         return view('cities.show', compact('city'));    
     }
 
