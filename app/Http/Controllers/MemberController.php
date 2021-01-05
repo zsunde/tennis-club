@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Member;
-
-
+use App\Models\Role;
+use App\Models\Address;
 class MemberController extends Controller
 {
     /**
@@ -27,11 +27,10 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $member =  Member::paginate();
         $roles = Role::pluck('name', 'id');
         $addresses = Address::pluck('street', 'id');
         return view('members.create',
-        compact('member', 'roles', 'addresses')  ); 
+        compact('roles', 'addresses')); 
     }
 
     /**
@@ -45,6 +44,7 @@ class MemberController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|max:255',
+            'password' => 'required',
             'address_id' => 'required',
             'role_id' => 'required'
         ]);
