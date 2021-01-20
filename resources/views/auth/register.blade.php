@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="country">Country</label>
-                    {{ Form::select('country_id', $countries, 1, ['class' => 'form-control', 'id' => 'country']) }}
+                    <label for="address">Address</label>
+                    {{ Form::select('address_id', $addresses, 1, ['class' => 'form-control', 'id' => 'address']) }}
                 </div>
 
                 <div class="mt-3">

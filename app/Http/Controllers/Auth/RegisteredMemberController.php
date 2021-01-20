@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Member;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Country;
+use App\Models\Address;
 
-class RegisteredUserController extends Controller
+class RegisteredMemberController extends Controller
 {
     /* otvori registracijsku formu */
     public function create()
     {
-        $countries = Country::pluck('name', 'id');
-        return view('auth.register', compact('countries'));
+        $addresses = Address::pluck('street', 'id');
+        return view('auth.register', compact('addresses'));
     }
 
     /* pozvano na Register gumb */
@@ -25,20 +25,20 @@ class RegisteredUserController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:members',
             'password' => 'required|min:7|confirmed',
-            'country_id' => 'required'
+            'address_id' => 'required'
         ]);
 
         $data['role_id'] = 2; /* hardkodirano na 'User' jer samo admin može dodati drugog admina */
         $data['password'] = Hash::make($data['password']);
 
         /* dodaj korisnika u bazu */
-        $user = User::create($data);
+        $member = Member::create($data);
 
         /* prijavi se u sustav novim korisnikom */
-        Auth::login($user);
-        event(new Registered($user));
+        Auth::login($member);
+        event(new Registered($member));
         return redirect()->route('home');
     }
 }

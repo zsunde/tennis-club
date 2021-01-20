@@ -2,17 +2,17 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisteredMemberController;
 use App\Http\Controllers\Auth\ChangePasswordController;
 
 use Illuminate\Support\Facades\Route;
 
 /* registracija */
-Route::get('/register', [RegisteredUserController::class, 'create'])
+Route::get('/register', [RegisteredMemberController::class, 'create'])
     ->middleware('guest')
     ->name('register');
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
+Route::post('/register', [RegisteredMemberController::class, 'store'])
     ->middleware('guest');
 
 /* login */
@@ -29,10 +29,10 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
 
 /* change password */
-Route::get('auth/change_password/{user}', [ChangePasswordController::class, 'edit'])
+Route::get('auth/change_password/{member}', [ChangePasswordController::class, 'edit'])
     ->middleware('auth')
     ->name('change_password.edit');
 
-Route::post('auth/change_password/{user}', [ChangePasswordController::class, 'update'])
+Route::post('auth/change_password/{member}', [ChangePasswordController::class, 'update'])
     ->middleware('auth')
     ->name('change_password.update');

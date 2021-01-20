@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Member;
 
 use Hash;
 
@@ -26,11 +26,11 @@ class ChangePasswordController extends Controller
         $data['password'] = Hash::make($data['password']);
         
         /* u jednoj liniji dohvati korisnika i promijeni password */
-        User::findOrFail($id)
+        Member::findOrFail($id)
             ->fill($data) // $data = ['password' => 'password-sa-frontenda']
             ->save();
         
 
-        return redirect()->route('users.show', ['user' => $id]);
+        return redirect()->route('members.show', ['member' => $id]);
     }
 }

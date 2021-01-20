@@ -23,9 +23,12 @@ use App\Http\Controllers\CourtReservationController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::middleware(['auth'])->group(function () {
+
+    /* homepage, primjetiti ->name('home') na kraju */
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
 
 Route::resource('countries', CountryController::class);
 Route::resource('addresses', AddressController::class);
@@ -37,6 +40,7 @@ Route::resource('matches', MatchController::class);
 Route::resource('set_results', SetResultController::class);
 Route::resource('match_results', MatchResultController::class);
 Route::resource('court_reservation', CourtReservationController::class);
+});
 
 /* ovdje su rute za login, registraciju, change password, itd. */
 require __DIR__.'/auth.php';

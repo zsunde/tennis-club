@@ -69,7 +69,7 @@ $currentUser = \Auth::user();
                 Welcome {{ $currentUser->name }}<small> ({{ $currentUser->role->name }})</small>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('users.show', ['user' => $currentUser->id]) }}">My profile</a>
+                <a class="dropdown-item" href="{{ route('members.show', ['member' => $currentUser->id]) }}">My profile</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="dropdown-item">Logout</button>
