@@ -18,7 +18,7 @@
             @endif
         </div>
 
-        <!-- native name -->
+        <!-- country code -->
         <div class="form-group">
             <label for="code">Country code</label>
             <input value="{{ $country->code }}" name="code" type="text" class="form-control" id="code">

@@ -95,6 +95,10 @@ class CountryController extends Controller
      */
     public function destroy($id)
     {
-        //
+         /* primjer upita kojeg generira linija ispod: DELETE FROM countries WHERE id = 1 */
+         Country::destroy($id);
+
+         /* nakon brisanja, napravi redirect na index stranicu */
+         return redirect()->route('countries.index');
     }
 }

@@ -111,6 +111,8 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        //
+        member::destroy($id);
+
+        return redirect()->route('members.index');
     }
 }

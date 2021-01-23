@@ -85,6 +85,8 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Address::destroy($id);
+
+         return redirect()->route('addresses.index');
     }
 }

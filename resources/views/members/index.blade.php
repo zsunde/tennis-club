@@ -2,7 +2,7 @@
 
 @section('content')
 <a class="btn btn-primary mt-5" href="{{route('members.create')}}">Add</a>
-<table class="table table-striped mt-3">
+<table class="table table-striped mt-5">
      <thead>
         <tr>
             <th scope="col">id</th>
@@ -28,8 +28,10 @@
             <td>
             <a class="btn btn-outline-primary" href="{{route('members.show', ['member' => $member -> id])}}">Details</a>
             <a class="btn btn-outline-primary" href="{{route('members.edit', ['member' => $member -> id])}}">Edit</a>
+            <a class="btn btn-outline-primary" href="{{ route('change_password.edit', ['member' => $member->id]) }}">Change password</a>
             </td>
         </tr>
         @endforeach
     </tbody>
-</table>@endsection
+</table>
+@endsection
