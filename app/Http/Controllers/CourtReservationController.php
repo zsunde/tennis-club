@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\CourtReservation;
+use App\Models\Member;
+use App\Models\Court;
 
 
 use Illuminate\Http\Request;
@@ -15,8 +17,8 @@ class CourtReservationController extends Controller
      */
     public function index()
     {
-        //
-        $court_reservation = CourtReservation::paginate();
+       $court_reservation = Court::with(['members'])->paginate();
+      // dd($court_reservation);
         return view('court_reservation.index', compact('court_reservation'));
     }
 

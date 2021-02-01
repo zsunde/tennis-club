@@ -15,6 +15,6 @@ class Court extends Model
 
     public function members()
     {
-    return $this->belongsToMany('App\Models\Member', 'court_reservation')->withPivot(id,'started_at', 'finished_at');
+    return $this->belongsToMany(Member::class, 'court_reservation', 'court_id', 'member_id')->withPivot('started_at', 'finished_at')->using('App\Models\CourtReservation');
     }
 }

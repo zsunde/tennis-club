@@ -26,7 +26,7 @@ class Member extends Authenticatable
 
     public function courts()
     {
-    return $this->belongsToMany('App\Models\Court', 'court_reservation')->withPivot(id,'started_at', 'finished_at')->using('App\Models\CourtReservation');;
+    return $this->belongsToMany(Court::class, 'court_reservation');
     }
 
 
